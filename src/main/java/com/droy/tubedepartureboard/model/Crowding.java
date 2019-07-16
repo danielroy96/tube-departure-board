@@ -11,4 +11,19 @@ public class Crowding {
 
     private List<TrainLoading> trainLoadings;
 
+    public List<PassengerFlow> getPassengerFlows() {
+        return passengerFlows;
+    }
+
+    public void setPassengerFlows(List<PassengerFlow> passengerFlows) {
+        this.passengerFlows = passengerFlows;
+    }
+
+    public List<TrainLoading> getTrainLoadings() {
+        return trainLoadings;
+    }
+
+    public void setTrainLoadings(List<TrainLoading> trainLoadings) {
+        this.trainLoadings = trainLoadings;
+    }
 }

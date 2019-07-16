@@ -11,4 +11,19 @@ public class LineModeGroup {
 
     private List<String> lineIdentifier;
 
+    public String getModeName() {
+        return modeName;
+    }
+
+    public void setModeName(String modeName) {
+        this.modeName = modeName;
+    }
+
+    public List<String> getLineIdentifier() {
+        return lineIdentifier;
+    }
+
+    public void setLineIdentifier(List<String> lineIdentifier) {
+        this.lineIdentifier = lineIdentifier;
+    }
 }
