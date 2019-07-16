@@ -29,7 +29,7 @@
   <ul>
     <#list arrivalPredictions?sort_by("timeToStation") as prediction>
       <li>
-        <b>${prediction.lineName}</b><#if prediction.destinationName??> - ${prediction.destinationName}</#if> <span class="badge badge-success">${prediction.vehicleId}</span><br>
+        <b>${prediction.lineName}</b><#if prediction.destinationName??> - ${prediction.destinationName} (${prediction.platformName})</#if> <span class="badge badge-success">${prediction.vehicleId}</span><br>
         ${prediction.timeToStation}secs - ${prediction.currentLocation}
       </li>
     </#list>
