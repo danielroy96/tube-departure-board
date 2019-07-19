@@ -1,4 +1,4 @@
-package com.droy.tubedepartureboard.model;
+package com.droy.tubedepartureboard.model.tfl;
 
 public class Identifier {
 

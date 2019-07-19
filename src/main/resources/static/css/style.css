@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'Johnston';
+    src: url('/ttf/johnston.ttf') format('truetype');
+}
+
+nav {
+    font-family: 'Johnston';
+}
+
+.header-roundel {
+    height: 1.5em;
+}
+
+.badge-tts {
+    width: 5em;
+}

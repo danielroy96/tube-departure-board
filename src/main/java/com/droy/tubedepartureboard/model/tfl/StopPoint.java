@@ -1,4 +1,4 @@
-package com.droy.tubedepartureboard.model;
+package com.droy.tubedepartureboard.model.tfl;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -31,7 +31,7 @@ public class StopPoint {
 
     private List<Identifier> lines;
 
-    private LineGroup lineGroup;
+    private List<LineGroup> lineGroup;
 
     private LineModeGroup lineModeGroup;
 
@@ -157,11 +157,11 @@ public class StopPoint {
         this.lines = lines;
     }
 
-    public LineGroup getLineGroup() {
+    public List<LineGroup> getLineGroup() {
         return lineGroup;
     }
 
-    public void setLineGroup(LineGroup lineGroup) {
+    public void setLineGroup(List<LineGroup> lineGroup) {
         this.lineGroup = lineGroup;
     }
 

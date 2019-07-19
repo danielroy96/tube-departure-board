@@ -1,6 +1,6 @@
 package com.droy.tubedepartureboard.controller;
 
-import com.droy.tubedepartureboard.model.Prediction;
+import com.droy.tubedepartureboard.model.tfl.Prediction;
 import com.droy.tubedepartureboard.service.TflService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,13 +23,9 @@ public class TubeDepartureBoardRestController {
         this.tflService = tflService;
     }
 
-    @GetMapping("/StopPoint/{id}/arrivals")
-    public List<Prediction> getStopPointPredictions(@PathVariable String id) {
-        List<Prediction> predictions = tflService.getStopPointArrivalPredictions(id).stream()
-                .filter(prediction -> prediction.getLineId().equalsIgnoreCase("northern"))
-                .sorted()
-                .collect(toList());
-        return predictions;
+    @GetMapping("/StopPoint/{stopPoint}/arrivals")
+    public List<Prediction> getStopPointPredictions(@PathVariable String stopPoint) {
+        return tflService.getPredictionsForStopPoint(stopPoint);
     }
 
 }
