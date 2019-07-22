@@ -7,6 +7,14 @@ nav {
     font-family: 'Johnston';
 }
 
+main#departure-board {
+    margin-top: 4em;
+}
+
+button.btn-line {
+    margin: 1em 0em 1em 1em;
+}
+
 .header-roundel {
     height: 1.5em;
 }

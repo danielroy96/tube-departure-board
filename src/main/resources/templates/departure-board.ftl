@@ -11,9 +11,6 @@
   <link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
-<style>
-
-</style>
 <header>
   <nav class="navbar navbar-light bg-light navbar-expand-md fixed-top">
     <div class="float-right mr-3">
@@ -22,11 +19,14 @@
     <a class="navbar-brand" href="#">Tottenham Court Road</a>
   </nav>
 </header>
-<main role="main">
-  <section class="jumbotron">
-    Lines available here
-  </section>
-  <div id="departure-board" class="container">
+<main role="main" id="departure-board">
+  <button v-for="line in lines" type="button" class="btn btn-line" @click.prevent="setLineId(line.id)" v-bind:style="{
+    color: line.foregroundColour,
+    'background-color': line.backgroundColour
+  }">
+    {{line.name}}
+  </button>
+  <div class="container">
     <div class="row">
       <div v-for="platformName in platformNames" class="col-6">
         <h4>{{platformName}}</h4>
@@ -45,15 +45,8 @@
         </ul>
       </div>
     </div>
-
-
-
-
-
   </div>
 </main>
-
-
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -72,29 +65,31 @@
     var app = new Vue({
         el: '#departure-board',
         data: {
+            stopPointId: '940GZZLUWLO',
             arrivalPredictions: [],
-            // darkMode: false,
-            // moment: moment,
-            // cookies: Cookies,
+            lines: [],
+            lineId: '',
         },
         computed: {
             orderedPredictions: function () {
                 return _.orderBy(this.arrivalPredictions, 'timeToStation')
             },
+            initialLineId: function () {
+                return this.lines[0].id;
+            },
+            actualLineId: function() {
+                return this.lineId || this.initialLineId;
+            },
             platformNames: function() {
                 return new Set(this.arrivalPredictions
-                    .filter(prediction => prediction.lineId === 'central')
+                    .filter(prediction => prediction.lineId === this.actualLineId)
                     .flatMap(prediction => prediction.platformName))
-            }
+            },
         },
         methods: {
-            // toggleDarkMode: function () {
-            //     this.darkMode = !this.darkMode;
-            //     Cookies.set('darkMode', this.darkMode);
-            // },
             getData: function () {
                 axios
-                    .get('/rest/StopPoint/940GZZLUTCR/arrivals')
+                    .get('/rest/StopPoint/' + this.stopPointId + '/arrivals')
                     .then(response => (this.arrivalPredictions = response.data));
                 $('[data-toggle="tooltip"]').tooltip();
             },
@@ -109,6 +104,9 @@
                         this[index].timeToStation = this[index].timeToStation - 1;
                     }, this.arrivalPredictions);
                 }, 1000);
+            },
+            setLineId: function(lineId) {
+                this.lineId = lineId;
             }
         },
         beforeDestroy() {
@@ -119,7 +117,9 @@
             this.getData();
             this.pollData();
             this.decrementTimeToStation();
-            // this.darkMode = Cookies.get('darkMode') === "true";
+            axios
+                .get('rest/StopPoint/' + this.stopPointId + '/lines')
+                .then(response => this.lines = response.data);
         },
     })
 </script>
