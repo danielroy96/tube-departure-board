@@ -16,7 +16,7 @@
     <div class="float-right mr-3">
       <img class="header-roundel" src="/img/roundel.svg">
     </div>
-    <a class="navbar-brand" href="#">Tottenham Court Road</a>
+    <a class="navbar-brand" href="#">King's Cross St. Pancras</a>
   </nav>
 </header>
 <main role="main" id="departure-board">
@@ -65,7 +65,7 @@
     var app = new Vue({
         el: '#departure-board',
         data: {
-            stopPointId: '940GZZLUWLO',
+            stopPointId: '940GZZLUKSX',
             arrivalPredictions: [],
             lines: [],
             lineId: '',

@@ -17,7 +17,7 @@ public enum Line {
     METROPOLITAN("metropolitan", "Metropolitan", "#FFFFFF", "#893267"),
     NORTHERN("northern" ,"Northern", "#FFFFFF", "#000000"),
     OVERGROUND("overground", "Overground", "#FFFFFF", "#F86F86"),
-    PICADILLY("picadilly", "Picadilly", "#FFFFFF", "#0450A1"),
+    PICADILLY("piccadilly", "Picadilly", "#FFFFFF", "#0450A1"),
     VICTORIA("victoria", "Victoria", "#FFFFFF", "#009FE0"),
     WATERLOO_CITY("waterloo-city", "Waterloo & City", "#113892", "#70C3CE");
 
