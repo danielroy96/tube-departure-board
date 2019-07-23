@@ -44,4 +44,9 @@ public class TubeDepartureBoardRestController {
         return tflService.getStopPoint(stopPoint);
     }
 
+    @GetMapping("/StopPoint")
+    public List<StopPoint> getAllStopPoints() {
+        return tflService.getAllStopPoints();
+    }
+
 }

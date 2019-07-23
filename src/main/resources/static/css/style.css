@@ -7,7 +7,7 @@ nav {
     font-family: 'Johnston';
 }
 
-main#departure-board {
+main.departure-board-content {
     margin-top: 4em;
 }
 
